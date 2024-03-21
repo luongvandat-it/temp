@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/save" method="post" enctype="multipart/form-data">
+        <input type="text" name="maSanPham" id="maSanPham" placeholder="Nhap ma san pham!">
+        <br>
+        <input type="text" name="tenSanPham" id="tenSanPham" placeholder="Nhap ten san pham!">
+        <br>
+        <input type="number" name="soLuong" id="soLuong" placeholder="Nhap so luong!">
+        <br>
+        <input type="file" name="image" id="image" accept="image/*">
+        <br>
+        <button type="submit">Add</button>
+    </form>
+
+    <form action="/delete" method="post" enctype="multipart/form-data">
+        <table border="true">
+            <tr>
+                <th>Ma san pham</th>
+                <th>Ten san pham</th>
+                <th>So luong</th>
+                <th>Hinh anh</th>
+                <th>Chon</th>
+            </tr>
+
+            <% data.forEach(item=> { %>
+                <tr>
+                    <td>
+                        <%= item.maSanPham %>
+                    </td>
+                    <td>
+                        <%= item.tenSanPham %>
+                    </td>
+                    <td>
+                        <%= item.soLuong %>
+                    </td>
+                    <td>
+                        <img src="<%= item.image%>" alt="" width="48" height="48">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="<%= item.maSanPham %>" id="<%= item.maSanPham %>">
+                    </td>
+                </tr>
+                <% }) %>
+        </table>
+        <button type="submit">Delete</button>
+    </form>
+
+</body>
+
+</html>
